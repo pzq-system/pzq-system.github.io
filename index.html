@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>docsify</title>
+    <link rel="icon" href="_media/favicon.ico" />
+    <meta
+      name="google-site-verification"
+      content="6t0LoIeFksrjF4c9sqUEsVXiQNxLp2hgoqo0KryT-sE"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="keywords"
+      content="doc,docs,documentation,gitbook,creator,generator,github,jekyll,github-pages"
+    />
+    <meta name="description" content="A magical documentation generator." />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
+      title="vue"
+    />
+    <style>
+      nav.app-nav li ul {
+        min-width: 100px;
+      }
+
+      #carbonads {
+        box-shadow: none !important;
+        width: auto !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">Loading ...</div>
+    <script src="//cdn.jsdelivr.net/npm/docsify-plugin-carbon@1"></script>
+    <script>
+      // Set html "lang" attribute based on URL
+      var lang = location.hash.match(/#\/(de-de|es|ru-ru|zh-cn)\//);
+
+      if (lang) {
+        document.documentElement.setAttribute('lang', lang[1]);
+      }
+
+      // Docsify configuration
+      window.$docsify = {
+        alias: {
+          
+        },//定义路由别名，可以更自由的定义路由规则。 支持正则。
+        auto2top: true,//切换页面后是否自动跳转到页面顶部。
+        coverpage: true,//启用封面页。开启后是加载 _coverpage.md 文件
+        executeScript: true,//执行文档里的 script 标签里的脚本，只执行第一个 script (demo)。 如果 Vue 存在，则自动开启。
+        loadSidebar: true,
+        loadNavbar: false,//加载自定义导航栏 _navbar.md
+        mergeNavbar: true,//小屏设备下合并导航栏到侧边栏。
+        maxLevel: 6,//默认情况下会抓取文档中所有标题渲染成目录，可配置最大支持渲染的标题层级。默认6
+        subMaxLevel: 2,//自定义侧边栏后默认不会再生成目录，你也可以通过设置生成目录的最大层级开启这个功能。
+        ga: 'UA-106147152-1',
+        matomo: {
+          host: '//matomo.thunderwave.de',
+          id: 6,
+        },
+        name: 'Note',
+        nameLink: {
+          '/': '#/',
+        },
+        search: {
+          noData: {
+            '/': '没有结果!',
+          },
+          paths: 'auto',
+          placeholder: {
+            '/': '搜索',
+          },
+        }
+      };
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-markdown.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-nginx.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-php.min.js"></script>
+    <script>
+      // Public site only
+      if (/docsify/.test(location.host)) {
+        document.write(
+          '<script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/ga.min.js"><\/script>'
+        );
+        document.write(
+          '<script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/matomo.min.js"><\/script>'
+        );
+      }
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
+  </body>
+</html>
