@@ -1,8 +1,8 @@
 # Docker 基础命令
 
-1.docker stop 容器Id 暂停容器
-2.docker start 容器Id 启动容器
-3.docker restart 容器Id 重启容器
+1. docker stop 容器Id 暂停容器
+2. docker start 容器Id 启动容器
+3. docker restart 容器Id 重启容器
 
 
 # Docker 安装 mysql
