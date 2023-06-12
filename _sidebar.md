@@ -4,7 +4,7 @@
  
 - 后端
 
-  - [Net6 笔记](Net.md)
+  - [Net6 笔记](NET.md)
   
 - docker
 
