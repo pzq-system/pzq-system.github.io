@@ -3,6 +3,6 @@
 > 学习笔记
 
 * [Vite](Vite.md)
-* [Net](Net.md)
+* [Net](NET.md)
 * [docker](docker.md)
 * [Linux](Liunx.md)
