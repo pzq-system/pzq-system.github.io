@@ -250,3 +250,15 @@ docker run -d -p 8081:8081 --name nexus -v /data/nexus:/nexus-data sonatype/nexu
 查看默认密码
 
 cat admin.password
+
+# Docker 安装 pgsql
+
+```
+docker run --name postgres \
+    --restart=always \
+    -e POSTGRES_PASSWORD=2W@UWtqUaQoyrOmOKpjp \
+    -p 5432:5432 \
+    -v /data/postgresql:/var/lib/postgresql/data \
+    -d postgres
+```
+

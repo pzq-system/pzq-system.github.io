@@ -104,3 +104,124 @@
 
 ```
 
+# 双向绑定
+
+## 一、控件绑定
+
+```
+<Window x:Class="dome.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dome"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <Slider x:Name="slider" Margin="5" />
+            <TextBox Height="30" Margin="5" Text="{Binding ElementName=slider,Path=Value,Mode=OneTime}" ></TextBox>
+            <TextBox Height="30" Margin="5" Text="{Binding ElementName=slider,Path=Value,Mode=OneWay}"></TextBox>
+            <TextBox Height="30" Margin="5" Text="{Binding ElementName=slider,Path=Value,Mode=OneWayToSource}"></TextBox>
+            <TextBox Height="30" Margin="5" Text="{Binding ElementName=slider,Path=Value,Mode=TwoWay}"></TextBox>
+        </StackPanel>
+    </Grid>
+</Window>
+
+```
+
+## 二、数据绑定
+
+```
+<Window x:Class="dome.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dome"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <TextBox Height="30" Margin="5" Text="{Binding Name}" ></TextBox>
+        </StackPanel>
+    </Grid>
+</Window>
+
+
+namespace dome
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+            this.DataContext = new Test()
+            { 
+                Name = "Test",
+            };
+        }
+    }
+}
+
+
+```
+
+# 命令（ICommad）
+
+```
+public class MyCommand : ICommand
+{
+    Action _action;
+    public MyCommand(Action action)
+    {
+        _action = action;
+    }
+    public event EventHandler? CanExecuteChanged;
+    //是否可执行
+    public bool CanExecute(object? parameter)
+    {
+        return true;
+    }
+
+    //执行的动作
+    public void Execute(object? parameter)
+    {
+        _action();
+    }
+}
+
+
+public class MainViewModel
+{
+    public MyCommand ShowCommand { get; set; }
+    public MainViewModel()
+    {
+        ShowCommand = new MyCommand(Show);
+    }
+    public void Show()
+    {
+        MessageBox.Show("点击了按钮！");
+    }
+}
+
+<Window x:Class="dome.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dome"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <Button Content="hello" Height="30" Width="40" Command="{Binding ShowCommand}" ></Button>
+        </StackPanel>
+    </Grid>
+</Window>
+
+```
+
